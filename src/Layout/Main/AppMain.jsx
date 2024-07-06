@@ -71,7 +71,7 @@ export default function AppMain() {
 
       <div
         id="блок2"
-        className="backdrop-blur-md text-white py-12 rounded-lg"
+        className="backdrop-blur-md text-white py-5 rounded-lg"
       >
         <div className="container mx-auto max-w-7xl px-5 ">
           <h2 className="text-4xl font-bold text-center text-white">

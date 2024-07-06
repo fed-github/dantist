@@ -16,7 +16,7 @@ const BurgerMenu = ({ active, setActive, toggleMenu }) => {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      const yOffset = -80; // Adjust this value to match the height of your fixed navigation menu
+      const yOffset = -70; // Adjust this value to match the height of your fixed navigation menu
       const yPosition =
         targetElement.getBoundingClientRect().top +
         window.pageYOffset +
