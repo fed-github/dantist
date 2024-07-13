@@ -3,6 +3,9 @@ import { Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Modal_Grid = ({ serviceInfo, onClose }) => {
+
+  const telNumber = <a href="tel:+1234567890">+1 (234) 567-890</a>; 
+
   const [isSecondModalOpen, setSecondModalOpen] = useState(false);
   const [question, setQuestion] = useState(
     `Вы действительно хотите купить услугу ${serviceInfo.title} ?`
@@ -131,7 +134,7 @@ const Modal_Grid = ({ serviceInfo, onClose }) => {
                 <button
                   className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg"
                 >
-                  55535
+                  {telNumber}
                 </button>
               ) : (
                 <>

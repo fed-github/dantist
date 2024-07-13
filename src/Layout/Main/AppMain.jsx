@@ -4,7 +4,7 @@ import Grid from "./Grid/Grid";
 import "./AppMain.css";
 
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+import Popover from "@mui/material/Popover";
 
 import InfoIcon from "@mui/icons-material/Info";
 import ReplyIcon from "@mui/icons-material/Reply";
@@ -22,14 +22,55 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function AppMain() {
+  const telNumber = <a href="tel:+1234567890">+1 (234) 567-890</a>;
+
   const [open, setOpen] = useState(false);
   const [paymentOpen, setPaymentOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const [namePopoverAnchorEl, setNamePopoverAnchorEl] = useState(null);
+  const [phonePopoverAnchorEl, setPhonePopoverAnchorEl] = useState(null);
+  const [sundayPopoverAnchorEl, setSundayPopoverAnchorEl] = useState(null);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handlePaymentOpen = () => setPaymentOpen(true);
   const handlePaymentClose = () => setPaymentOpen(false);
+
+  // const handlePopoverOpen = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+
+  // const handlePopoverClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  const handleNamePopoverOpen = (event) => {
+    setNamePopoverAnchorEl(event.currentTarget);
+  };
+
+  const handleNamePopoverClose = () => {
+    setNamePopoverAnchorEl(null);
+  };
+
+  const handlePhonePopoverOpen = (event) => {
+    setPhonePopoverAnchorEl(event.currentTarget);
+  };
+
+  const handlePhonePopoverClose = () => {
+    setPhonePopoverAnchorEl(null);
+  };
+
+  const handleSundayPopoverOpen = (event) => {
+    setSundayPopoverAnchorEl(event.currentTarget);
+  };
+
+  const handleSundayPopoverClose = () => {
+    setSundayPopoverAnchorEl(null);
+  };
+
+  const popoverOpen = Boolean(anchorEl);
 
   return (
     <main className="main">
@@ -40,17 +81,39 @@ export default function AppMain() {
             alt="Dentist portrait"
             className="w-44 h-44 rounded-full mt-2 mb-4 bg-white"
           />
-          <Tooltip
-            title="Стоматолог с многолетним опытом работы"
-            arrow
-            placement="top"
+          <IconButton
+            // className="ml-2 p-0 m-0 text-white"
+            // onClick={handleNamePopoverOpen}
+
+            className="ml-0 p-0 m-0 text-white"
+            onClick={handleNamePopoverOpen}
           >
-            <IconButton className="ml-2 p-0 m-0 text-white">
-              <h2 className="font-semibold text-lg text-white m-0 p-0">
-                Стоматолог: Вадим Булатов
-              </h2>
-            </IconButton>
-          </Tooltip>
+            {" "}
+            <h2 className="font-semibold text-lg text-white m-0 p-2">
+              Стоматолог: DR. QOBILOV
+            </h2>
+            <p className="font-semibold text-lg text-white m-0 p-0">
+              <InfoIcon />
+            </p>
+
+          </IconButton>
+          <Popover
+            open={Boolean(namePopoverAnchorEl)}
+            anchorEl={namePopoverAnchorEl}
+            onClose={handleNamePopoverClose}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "center",
+            }}
+            transformOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+          >
+            <div style={{ padding: "10px" }}>
+              Стоматолог с многолетним опытом работы
+            </div>
+          </Popover>
 
           <p className="text-sm">Адрес: Сhirakchi</p>
           <Button
@@ -69,14 +132,11 @@ export default function AppMain() {
 
       <Grid />
 
-      <div
-        id="блок2"
-        className="backdrop-blur-md text-white py-5 rounded-lg"
-      >
+      <div id="блок2" className="backdrop-blur-md text-white py-5 rounded-lg">
         <div className="container mx-auto max-w-7xl px-5 ">
-          <h2 className="text-4xl font-bold text-center text-white">
+          <h4 className="text-2xl font-bold text-center text-white">
             Улыбка вашей мечты с Кобиловым Абдикадиром!
-          </h2>
+          </h4>
 
           <p className="text-lg mt-4 text-white">
             Приветствуем вас на сайте Dental Clinic! Мы рады предложить вам
@@ -91,7 +151,7 @@ export default function AppMain() {
             обеспечить вам максимально комфортное и безболезненное посещение.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 text-white-200">
+          <h2 className="text-2xl font-bold mt-8 text-white-200">
             Наши преимущества:
           </h2>
 
@@ -111,7 +171,7 @@ export default function AppMain() {
             ))}
           </ul>
 
-          <h2 className="text-3xl font-bold mt-8 text-white">
+          <h2 className="text-2xl font-bold mt-8 text-white">
             Что мы предлагаем:
           </h2>
 
@@ -141,18 +201,18 @@ export default function AppMain() {
             Запишитесь на прием уже сегодня!
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 text-white" id="блок3">
+          <h2 className="text-2xl font-bold mt-8 text-white" id="блок3">
             Контакты:
           </h2>
 
           <ul className="list-disc list-inside text-lg mt-4 text-white">
             <li className="flex items-start mt-2">
               <PhoneIcon className="h-6 w-6 text-yellow-300 mr-2" />
-              Телефон: 8-800-555-35-35
+              <p>Telephone: {telNumber}</p>
             </li>
             <li className="flex items-start mt-2">
               <EnvelopeIcon className="h-6 w-6 text-yellow-300 mr-2" />
-              Email: Qobilov@mail.uz
+              <p>Email: Qobilov@mail.uz</p>
             </li>
           </ul>
 
@@ -169,9 +229,9 @@ export default function AppMain() {
         </div>
       </div>
 
-      <footer className="w-full mt-4 text-center text-xs border-t border-white pt-2 text-white">
+      {/* <footer className="w-full mt-4 text-center text-xs border-t border-white pt-2 text-white">
         © 2024 All rights reserved.
-      </footer>
+      </footer> */}
 
       <Modal
         open={open}
@@ -191,10 +251,33 @@ export default function AppMain() {
               Info:
             </h2>
             <p id="parent-modal-description" className="mb-4 font-bold">
-              Tel: +998-90-546-45-45
+              Номер: {telNumber}
+              <IconButton
+                className="ml-0 p-0 m-0 text-white"
+                onClick={handlePhonePopoverOpen}
+              >
+                <p className="font-semibold text-lg text-white m-0 p-0">
+                  <InfoIcon />
+                </p>
+              </IconButton>
+              <Popover
+                open={Boolean(phonePopoverAnchorEl)}
+                anchorEl={phonePopoverAnchorEl}
+                onClose={handlePhonePopoverClose}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "center",
+                }}
+                transformOrigin={{
+                  vertical: "bottom",
+                  horizontal: "center",
+                }}
+              >
+                <div style={{ padding: "10px" }}>Номер кликабклен</div>
+              </Popover>
             </p>
             <p id="parent-modal-description" className="mb-4">
-              Время работы: с 9:00 до 17:00
+              Время работы: с 9:00 до 18:00
             </p>
             <p id="parent-modal-description" className="mb-2">
               Обед: 13:00 ( 1 час )
@@ -202,13 +285,29 @@ export default function AppMain() {
 
             <p id="parent-modal-description" className="mb-0">
               Воскресение - выходной{" "}
-              <Tooltip title="Он играет в контр страйк" arrow placement="top">
-                <IconButton className="ml-2 p-0 m-0 text-white">
-                  <p className="font-semibold text-lg text-white m-0 p-0">
-                    <InfoIcon />
-                  </p>
-                </IconButton>
-              </Tooltip>
+              <IconButton
+                className="ml-0 p-0 m-0 text-white"
+                onClick={handleSundayPopoverOpen}
+              >
+                <p className="font-semibold text-lg text-white m-0 p-0">
+                  <InfoIcon />
+                </p>
+              </IconButton>
+              <Popover
+                open={Boolean(sundayPopoverAnchorEl)}
+                anchorEl={sundayPopoverAnchorEl}
+                onClose={handleSundayPopoverClose}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "center",
+                }}
+                transformOrigin={{
+                  vertical: "bottom",
+                  horizontal: "center",
+                }}
+              >
+                <div style={{ padding: "10px" }}>Он играет в контр страйк</div>
+              </Popover>
             </p>
 
             <Button
@@ -261,4 +360,3 @@ export default function AppMain() {
     </main>
   );
 }
-
