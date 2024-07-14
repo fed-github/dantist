@@ -2,6 +2,9 @@ import React from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { styled } from "@mui/system";
 
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TelegramIcon from "@mui/icons-material/Telegram";
+
 const CustomTextField = styled(TextField)({
   "& .MuiInputBase-input": {
     color: "white", // Цвет текста белый
@@ -26,45 +29,44 @@ const Footer = () => {
   return (
     <Box
       component="footer"
-      className="w-full p-10 mt-4 text-center text-xs pt-2 text-white "
+      className="w-full pl-10 pr-10 text-center text-xs text-white "
     >
-      <Box className="social-media-links my-4">
-        <Typography variant="h6">Следите за нами в соцсетях:</Typography>
-        <a
-          href="https://facebook.com"
+      <Box className="social-media-links mb-5" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+        <Typography variant="h6">Свяжитесь с нами в соцсетях:</Typography>
+        <Button
+          variant="contained"
+          href="https://t.me/DrQobilov"
           target="_blank"
           rel="noopener noreferrer"
           className="mx-2"
+          sx={{
+            "&:hover": {
+              backgroundColor: "black", // более темный розовый для состояния наведения
+            },
+          }}
         >
-          Facebook
-        </a>
-        <a
+          {" "}
+          <TelegramIcon />
+          <Box className="ml-3"> Telegram</Box>
+        </Button>
+
+        <Button
+          variant="contained"
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="mx-2"
+          className="mx-2 ml-5"
+          sx={{
+            backgroundColor: "#ff69b4",
+            "&:hover": {
+              backgroundColor: "black", // более темный розовый для состояния наведения
+            },
+          }}
         >
-          Instagram
-        </a>
-        <a
-          href="https://twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mx-2"
-        >
-          Twitter
-        </a>
+          <InstagramIcon />
+          <Box className="ml-3"> Instagram</Box>
+        </Button>
       </Box>
-
-      {/* <Box className="customer-reviews my-4">
-        <Typography variant="h6">Отзывы наших клиентов:</Typography>
-        <blockquote>
-          "Отличная клиника! Врач очень внимательный и профессиональный."
-        </blockquote>
-        <blockquote>
-          "Был впервые и остался очень доволен. Рекомендую всем!"
-        </blockquote>
-      </Box> */}
 
       <Typography variant="h6">Наш адрес:</Typography>
       <Box className="map-section my-4 flex justify-center alighn-column">
@@ -113,13 +115,6 @@ const Footer = () => {
           </Box>
         </form>
       </Box>
-
-      {/* <Box className="working-hours my-4">
-        <Typography variant="h6">Расписание работы:</Typography>
-        <Typography>Понедельник - Пятница: 9:00 - 18:00</Typography>
-        <Typography>Суббота: 10:00 - 14:00</Typography>
-        <Typography>Воскресенье: Выходной</Typography>
-      </Box> */}
 
       <Box
         component="footer"

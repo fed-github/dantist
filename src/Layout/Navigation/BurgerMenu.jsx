@@ -35,7 +35,8 @@ const BurgerMenu = ({ active, setActive, toggleMenu }) => {
     { value: "Главная", href: "#блок0", icon: "anchor" },
     { value: "Услуги", href: "#блок1", icon: "dialer_sip" },
     { value: "О клинике", href: "#блок2", icon: "api" },
-    { value: "Адрес", href: "#блок3", icon: "android" },
+    { value: "Контакты", href: "#блок3", icon: "android" },
+    { value: "Адрес", href: "#блок4", icon: "android" },
   ];
 
   return (
