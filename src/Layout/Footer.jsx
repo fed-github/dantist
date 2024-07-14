@@ -68,8 +68,8 @@ const Footer = () => {
         </Button>
       </Box>
 
-      <Typography variant="h6">Наш адрес:</Typography>
-      <Box className="map-section my-4 flex justify-center alighn-column">
+      <Typography id="блок4" variant="h6">Наш адрес:</Typography>
+      <Box className="map-section my-4 flex justify-center alighn-column" >
         <iframe
           src="https://www.google.com/maps?q=39.036811381417145,66.57110237315982&output=embed"
           width="600"
