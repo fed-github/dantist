@@ -38,13 +38,6 @@ export default function AppMain() {
   const handlePaymentOpen = () => setPaymentOpen(true);
   const handlePaymentClose = () => setPaymentOpen(false);
 
-  // const handlePopoverOpen = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handlePopoverClose = () => {
-  //   setAnchorEl(null);
-  // };
 
   const handleNamePopoverOpen = (event) => {
     setNamePopoverAnchorEl(event.currentTarget);
